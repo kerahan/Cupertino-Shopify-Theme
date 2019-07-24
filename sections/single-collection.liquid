@@ -6,7 +6,9 @@
     </div>
     {% endif %}
 
-{% if section.settings.order == true %}
+    {%- assign collection = collections[section.settings.collection] -%}
+    
+    {% if section.settings.order == true %}
     <div class="container-fluid">
         <div class="row">
             <div class="card-deck">
