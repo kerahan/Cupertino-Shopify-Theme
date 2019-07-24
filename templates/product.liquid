@@ -25,14 +25,21 @@
   <label for="Quantity">quantity</label>
   <input type="number" id="Quantity" name="quantity" value="1" min="1">
 
-  {% comment %} Change color depending on availability {% endcomment %}
+  <!-- Change color depending on availability  -->
   <button id="AddToCart" type="submit" name="add" class="
   {% unless current_variant.available %}btn-custom 
   {% else %}btn-custom2 
   {% endunless %}">
-  Add to cart
+  <!-- Change text depending on Quantity -->
+  <span>
+    {% unless current_variant.inventory_quantity < 5 %}
+    Add to cart
+    {% else %}
+    Low Stock
+    {% endunless %}
+  </span>
   </button>
 
-  
+
 </form>
 <div>{{ product.description }}</div>
