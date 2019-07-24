@@ -6,21 +6,30 @@
         </div>
     {% endif %}
 
+    {% if section.settings.order == true %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="card-deck">
+                  {% assign products = collection.products | sort: 'title' %}
+                  {% for product in products %}
+                  <div class="card" style="width: 18rem;">
+                      <img src="{{ product | img_url: 'large' }}" class="card-img-top" alt="...">
+                      <div class="card-body">
+                          <h5 class="card-title">{{product.title}}</h5>
+                          <p class="card-text">{{product.price | money_with_currency }}</p>
+                          <a href="#" class="btn btn-dark">See Product</a>
+                      </div>
+                  </div>
+                  {% endfor %}
+              </div>
+          </div>
+      </div>
 
-    
-      {% if section.settings.sort_enable %}
-      <div class="collection-sorting__dropdown">
-              <label for="sort-by">Sort by</label> 
-              <select id="sort-by">
-                <option value="title-ascending">A-Z</option>
-                <option value="title-descending">Z-A</option>
-              </select>
-      {% endif %}
-
-    
-        <div class="container-fluid">
-            <div class="row">
-                <div class="card-deck">
+      {%else%}     
+      
+      <div class="container-fluid">
+          <div class="row">
+              <div class="card-deck">
                     {% for product in collection.products %}
                     <div class="card" style="width: 18rem;">
                         <img src="{{ product | img_url: 'large' }}" class="card-img-top" alt="...">
@@ -34,6 +43,12 @@
                 </div>
             </div>
         </div>
+      
+{% endif %}
+
+
+    
+       
       
 
       {% schema %}
@@ -53,11 +68,11 @@
                 "label": "Collection"
             },
             {
-                "type": "checkbox",
-                "id": "sort_enable",
-                "label": "Enable sorting",
-                "default": true
-            }
+              "type": "checkbox",
+              "id": "order",
+              "label": "Order by Title",
+              "default": false
+          }
         ],
         "presets": [
             {
