@@ -40,13 +40,15 @@
       {{ 'register' | customer_register_link }}
     {% endif %}
   {% endif %}
+  
+  {% section 'single-collection' %}
 
   <main role="main">
     {{ content_for_layout }}
   </main>
   
   {% include 'product-modal' %}
-  {% section 'single-collection' %}
+  
   {% include 'coding-test-log' %}
   {% include 'theme-setting-title' %}
   {% include 'ajaxify-cart' %}
