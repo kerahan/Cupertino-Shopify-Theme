@@ -7,8 +7,12 @@
   <link rel="canonical" href="{{ canonical_url }}">
   <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
   {{ content_for_header }} <!-- Header hook for plugins -->
+
   {{ 'application.scss.css' | asset_url | stylesheet_tag }}
   {{ 'application.js' | asset_url | script_tag }}
+  {{ 'theme.scss.css' | asset_url | stylesheet_tag }}
+  {{ '//code.jquery.com/jquery-3.4.1.js' | script_tag }}
+  
 </head>
 <body>
 
@@ -39,5 +43,8 @@
   <main role="main">
     {{ content_for_layout }}
   </main>
+
+  {% include 'ajaxify-cart' %}
+
 </body>
 </html>
