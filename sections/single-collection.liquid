@@ -1,56 +1,51 @@
 <div class="page-width">
 
     {% if section.settings.title != blank %}
-        <div class="section-header text-center">
-            <h2>{{ section.settings.title | escape }}</h2>
-        </div>
+    <div class="section-header text-center">
+        <h2>{{ section.settings.title | escape }}</h2>
+    </div>
     {% endif %}
 
-    {% if section.settings.order == true %}
+{% if section.settings.order == true %}
     <div class="container-fluid">
         <div class="row">
             <div class="card-deck">
-                  {% assign products = collection.products | sort: 'title' %}
-                  {% for product in products %}
-                  <div class="card" style="width: 18rem;">
-                      <img src="{{ product | img_url: 'large' }}" class="card-img-top" alt="...">
-                      <div class="card-body">
-                          <h5 class="card-title">{{product.title}}</h5>
-                          <p class="card-text">{{product.price | money_with_currency }}</p>
-                          <a href="#" class="btn btn-dark">See Product</a>
-                      </div>
-                  </div>
-                  {% endfor %}
-              </div>
-          </div>
-      </div>
-
-      {%else%}     
-      
-      <div class="container-fluid">
-          <div class="row">
-              <div class="card-deck">
-                    {% for product in collection.products %}
-                    <div class="card" style="width: 18rem;">
-                        <img src="{{ product | img_url: 'large' }}" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">{{product.title}}</h5>
-                            <p class="card-text">{{product.price | money_with_currency }}</p>
-                            <a href="#" class="btn btn-dark">See Product</a>
-                        </div>
+                {% assign products = collection.products | sort: 'title' %}
+                {% for product in products %}
+                <div class="card" style="width: 18rem;">
+                    <img src="{{ product | img_url: 'large' }}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{product.title}}</h5>
+                        <p class="card-text">{{product.price | money_with_currency }}</p>
+                        <a href="#" class="btn btn-dark">See Product</a>
                     </div>
-                    {% endfor %}
                 </div>
+                {% endfor %}
             </div>
         </div>
+    </div>
+
+    {%else%}
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="card-deck">
+                {% for product in collection.products %}
+                <div class="card" style="width: 18rem;">
+                    <img src="{{ product | img_url: 'large' }}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{product.title}}</h5>
+                        <p class="card-text">{{product.price | money_with_currency }}</p>
+                        <a href="#" class="btn btn-dark">See Product</a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
         </div>
-      
-{% endif %}
+    </div>
+    {% endif %}
+</div>
 
-
-    
-       
-      
 
       {% schema %}
       {
