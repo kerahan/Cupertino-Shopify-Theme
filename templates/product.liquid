@@ -24,6 +24,12 @@
   {{ current_variant.price | money }}
   <label for="Quantity">quantity</label>
   <input type="number" id="Quantity" name="quantity" value="1" min="1">
-  <button type="submit" name="add" id="AddToCart">Add to cart</button>
+  <!-- <button type="submit" name="add" id="AddToCart">Add to cart</button> -->
+  <button id="AddToCart" type="submit" name="add"
+              
+                {% comment %} Change color depending on availability {% endcomment %}
+                class="{% unless current_variant.available %}btn-custom 
+                {% else %}btn-custom2 
+                {% endunless %}">Add to cart</button>
 </form>
 <div>{{ product.description }}</div>

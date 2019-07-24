@@ -1,1 +1,16 @@
 // put your styles here
+
+.btn-custom {
+	background-color: grey;
+	color: white;
+}
+
+.btn-custom2 {
+	background-color: green;
+	color: white;
+
+	&:not([disabled]):hover,
+	&:focus {
+		background-color: #6593f5;
+	}
+}
