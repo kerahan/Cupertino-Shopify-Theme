@@ -1,18 +1,21 @@
 // put your styles here
 
-.btn-custom {
-	background-color: grey;
-	color: white;
+.btn-success:hover {
+	background-color: #3c5ca2 !important;
 }
 
-.btn-custom2 {
-	background-color: green;
-	color: white;
+.modal-item-header {
+	font-weight: bold;
+	margin-bottom: 0.5rem;
+	margin-left: 10px;
+}
 
-	&:not([disabled]):hover,
-	&:focus {
-		background-color: #6593f5;
-	}
+.modal-cart-total {
+	font-weight: bold;
+	// margin-top: 1rem;
+	// margin-bottom: 0.5rem;
+	// margin-left: auto;
+	margin: 1rem 10px 0.5rem auto;
 }
 
 // .bg-modals {
@@ -43,22 +46,14 @@
 
 // .modal-item-quantity {
 // 	position: absolute;
-// 	right: 10px;	
-// }
-
-// .modal-item-header {
-// 	font-weight: bold;
-// 	margin-bottom: 0.5rem;
+// 	right: 10px;
 // }
 
 // #closeBtn {
 // 	margin-top: 0.5rem;
 // 	text-align: center;
 // }
-// .modal-cart-total {
-// 	margin-top: 1rem;
-// 	margin-bottom: 0.5rem;
-// }
+
 // .modal-cta-link {
 // 	width: 100%;
 // 	margin-top: 3rem;

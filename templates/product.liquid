@@ -27,8 +27,8 @@
 
   <!-- Change color depending on availability  -->
   <button id="AddToCart" type="submit" name="add" class="
-  {% unless current_variant.available %}btn-custom 
-  {% else %}btn-custom2 
+  {% unless current_variant.available %}btn btn-secondary
+  {% else %}btn btn-success
   {% endunless %}">
   <!-- Change text depending on Quantity -->
   <span>

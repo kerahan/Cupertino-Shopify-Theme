@@ -17,5 +17,6 @@
 // });
 
 $(function() {
-    $('#exampleModalCenter').modal('show');
+    $('#exampleModalLong').modal('show');
 });
+
