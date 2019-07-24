@@ -1,10 +1,22 @@
 <div class="page-width">
-  
+
     {% if section.settings.title != blank %}
         <div class="section-header text-center">
             <h2>{{ section.settings.title | escape }}</h2>
         </div>
     {% endif %}
+
+
+    
+      {% if section.settings.sort_enable %}
+      <div class="collection-sorting__dropdown">
+              <label for="sort-by">Sort by</label> 
+              <select id="sort-by">
+                <option value="title-ascending">A-Z</option>
+                <option value="title-descending">Z-A</option>
+              </select>
+      {% endif %}
+
     
         <div class="container-fluid">
             <div class="row">
