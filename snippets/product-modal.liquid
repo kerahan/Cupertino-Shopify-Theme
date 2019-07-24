@@ -1,0 +1,28 @@
+
+<div class="bg-modals">
+	<div class="modal-contents">
+
+    <div class="close">+</div>
+    <div class="">
+      <div class="">{{ current_variant.inventory_quantity }} {{product.title}} left!</div>
+      <div class="modal-item-header">Items in your cart:</div>
+      {% for item in cart.items %}
+      <li>
+        <span class="modal-item-title">{{item.title}}</span>
+        <span class="modal-item-quantity">Qty: {{item.quantity}}</span>
+      </li>
+      {% endfor %}
+      <div class="modal-cart-total">Subtotal: {{ cart.total_price | | money_with_currency }}</div>
+
+      <a href="{{ routes.cart_url }}" class="">
+          View Cart (<span>{{cart.item_count}}</span>)
+        </a>
+      <div id="closeBtn">
+          <button class="button">
+            Continue Shopping
+          </button>
+        </div>
+    </div>
+
+	</div>
+</div>
