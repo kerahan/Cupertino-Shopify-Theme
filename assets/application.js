@@ -3,5 +3,4 @@ $(function() {
 	$('#exampleModalLong').modal('show');
 });
 
-// Sorting
 
