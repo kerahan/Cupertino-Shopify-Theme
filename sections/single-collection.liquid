@@ -1,191 +1,58 @@
 <div class="page-width">
+  
+    {% if section.settings.title != blank %}
+        <div class="section-header text-center">
+            <h2>{{ section.settings.title | escape }}</h2>
+        </div>
+    {% endif %}
+    
+        <div class="container-fluid">
+            <div class="row">
+                <div class="card-deck">
+                    {% for product in collection.products %}
+                    <div class="card" style="width: 18rem;">
+                        <img src="{{ product | img_url: 'large' }}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">{{product.title}}</h5>
+                            <p class="card-text">{{product.price | money_with_currency }}</p>
+                            <a href="#" class="btn btn-dark">See Product</a>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
       
-<!-- START  -->
-<!-- <div>
-  <label for="sort-by">Sort by</label> 
-  <select id="sort-by">
-    <option value="manual">Featured</option>
-    <option value="price-ascending">Price: Low to High</option>
-    <option value="price-descending">Price: High to Low</option>
-    <option value="title-ascending">A-Z</option>
-    <option value="title-descending">Z-A</option>
-    <option value="created-ascending">Oldest to Newest</option>
-    <option value="created-descending">Newest to Oldest</option>
-    <option value="best-selling">Best Selling</option>
-  </select>
-</div>
 
-<script>
-Shopify.queryParams = {};
-if (location.search.length) {
-  for (var aKeyValue, i = 0, aCouples = location.search.substr(1).split('&'); i < aCouples.length; i++) {
-    aKeyValue = aCouples[i].split('=');
-    if (aKeyValue.length > 1) {
-      Shopify.queryParams[decodeURIComponent(aKeyValue[0])] = decodeURIComponent(aKeyValue[1]);
-    }
-  }
-}
-jQuery('#sort-by')
-  .val('{{ collection.sort_by | default: collection.default_sort_by | escape }}')
-  .bind('change', function() {
-    Shopify.queryParams.sort_by = jQuery(this).val();
-    location.search = jQuery.param(Shopify.queryParams).replace(/\+/g, '%20');
-  });
-</script> -->
-<!-- END -->
-
-        
-      
-</div>
-      
-      
-      
       {% schema %}
       {
-        "name": {
-          "de": "Featured Kategorie",
-          "en": "collection select",
-          "es": "Colección destacada",
-          "fr": "Collection vedette",
-          "it": "Collezione in evidenza",
-          "ja": "特集コレクション",
-          "nl": "Uitgelichte collectie",
-          "pt-BR": "Coleção em destaque",
-          "zh-CN": "特色产品系列",
-          "zh-TW": "精選商品系列"
-        },
+        "name": "collection select",
         "class": "index-section",
         "settings": [
-          {
-            "type": "text",
-            "id": "title",
-            "label": {
-              "de": "Titel",
-              "en": "Heading",
-              "es": "Título",
-              "fr": "En-tête",
-              "it": "Heading",
-              "ja": "見出し",
-              "nl": "Kop",
-              "pt-BR": "Título",
-              "zh-CN": "标题",
-              "zh-TW": "標題"
+            {
+                "type": "text",
+                "id": "title",
+                "label": "Heading",
+                "default": "Selected Collection"
             },
-            "default": {
-              "de": "Featured Kategorie",
-              "en": "Selected Collection",
-              "es": "Colección destacada",
-              "fr": "Collection vedette",
-              "it": "Collezione in evidenza",
-              "ja": "特集コレクション",
-              "nl": "Uitgelichte collectie",
-              "pt-BR": "Coleção em destaque",
-              "zh-CN": "特色产品系列",
-              "zh-TW": "精選商品系列"
+            {
+                "id": "collection",
+                "type": "collection",
+                "label": "Collection"
+            },
+            {
+                "type": "checkbox",
+                "id": "sort_enable",
+                "label": "Enable sorting",
+                "default": true
             }
-          },
-          {
-            "id": "collection",
-            "type": "collection",
-            "label": {
-              "de": "Kategorie",
-              "en": "Collection",
-              "es": "Colección",
-              "fr": "Collection",
-              "it": "Collezione",
-              "ja": "コレクション",
-              "nl": "Collectie",
-              "pt-BR": "Coleção",
-              "zh-CN": "收藏",
-              "zh-TW": "商品系列"
-            }
-          },
-          {
-            "type": "range",
-            "id": "grid",
-            "label": {
-              "de": "Produkte per Reihe",
-              "en": "Products per row",
-              "es": "Productos por fila",
-              "fr": "Produits par rangée",
-              "it": "Prodotti per riga",
-              "ja": "行あたりの商品数",
-              "nl": "Producten per rij",
-              "pt-BR": "Produtos por linha",
-              "zh-CN": "每行产品数",
-              "zh-TW": "每列產品數"
-            },
-            "min": 2,
-            "max": 5,
-            "step": 1,
-            "default": 3
-          },
-          {
-            "type": "range",
-            "id": "rows",
-            "label": {
-              "de": "Reihen",
-              "en": "Rows",
-              "es": "Filas",
-              "fr": "Rangées",
-              "it": "Righe",
-              "ja": "行",
-              "nl": "Rijen",
-              "pt-BR": "Linhas",
-              "zh-CN": "行数",
-              "zh-TW": "列"
-            },
-            "min": 1,
-            "max": 5,
-            "step": 1,
-            "default": 2
-          },
-          {
-            "type": "checkbox",
-            "id": "sort_enable",
-            "label": {
-              "de": "Sortieren erlauben",
-              "en": "Enable sorting",
-              "es": "Habilitar la función ordenar",
-              "fr": "Activer le tri",
-              "it": "Permetti di ordinare",
-              "ja": "並べ替えを有効にする",
-              "nl": "Sortering inschakelen",
-              "pt-BR": "Ativar classificação",
-              "zh-CN": "启用排序",
-              "zh-TW": "啟用排序"
-            },
-            "default": true
-          }
         ],
         "presets": [
-          {
-            "name": {
-              "de": "Featured Kategorie",
-              "en": "Collection Select",
-              "es": "Colección destacada",
-              "fr": "Collection vedette",
-              "it": "Collezione in evidenza",
-              "ja": "特集コレクション",
-              "nl": "Uitgelichte collectie",
-              "pt-BR": "Coleção em destaque",
-              "zh-CN": "特色产品系列",
-              "zh-TW": "精選商品系列"
-            },
-            "category": {
-              "de": "Kategorie",
-              "en": "Collection",
-              "es": "Colección",
-              "fr": "Collection",
-              "it": "Collezione",
-              "ja": "コレクション",
-              "nl": "Collectie",
-              "pt-BR": "Coleção",
-              "zh-CN": "收藏",
-              "zh-TW": "商品系列"
+            {
+                "name": "Collection Select",
+                "category": "Collection"
             }
-          }
         ]
-      }
+    }
       {% endschema %}
       
