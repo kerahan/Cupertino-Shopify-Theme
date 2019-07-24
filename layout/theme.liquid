@@ -8,10 +8,11 @@
   <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
   {{ content_for_header }} <!-- Header hook for plugins -->
 
-  {{ 'application.scss.css' | asset_url | stylesheet_tag }}
-  {{ 'application.js' | asset_url | script_tag }}
-  {{ 'theme.scss.css' | asset_url | stylesheet_tag }}
+  {{ 'application.scss' | asset_url | stylesheet_tag }}
   {{ '//code.jquery.com/jquery-3.4.1.js' | script_tag }}
+  {{ "//stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" | stylesheet_tag }} 
+  {{ "//cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" | script_tag }}
+  {{ "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" | script_tag }}
   
 </head>
 <body>
@@ -45,7 +46,7 @@
   </main>
   
   {% include 'product-modal' %}
-  {% section 'single-collection' %}
+  <!-- {% section 'single-collection' %} -->
   {% include 'coding-test-log' %}
   {% include 'theme-setting-title' %}
   {% include 'ajaxify-cart' %}

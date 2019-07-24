@@ -1,7 +1,7 @@
 <div class="page-width">
       
 <!-- START  -->
-<div>
+<!-- <div>
   <label for="sort-by">Sort by</label> 
   <select id="sort-by">
     <option value="manual">Featured</option>
@@ -14,6 +14,7 @@
     <option value="best-selling">Best Selling</option>
   </select>
 </div>
+
 <script>
 Shopify.queryParams = {};
 if (location.search.length) {
@@ -30,7 +31,7 @@ jQuery('#sort-by')
     Shopify.queryParams.sort_by = jQuery(this).val();
     location.search = jQuery.param(Shopify.queryParams).replace(/\+/g, '%20');
   });
-</script>
+</script> -->
 <!-- END -->
 
         

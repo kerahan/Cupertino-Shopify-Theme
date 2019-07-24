@@ -1,28 +1,65 @@
-
-<div class="bg-modals">
+<!-- <div class="bg-modals">
 	<div class="modal-contents">
+		<div class="close">+</div>
 
-    <div class="close">+</div>
-    <div class="">
-      <div class="">{{ current_variant.inventory_quantity }} {{product.title}} left!</div>
-      <div class="modal-item-header">Items in your cart:</div>
-      {% for item in cart.items %}
-      <li>
-        <span class="modal-item-title">{{item.title}}</span>
-        <span class="modal-item-quantity">Qty: {{item.quantity}}</span>
-      </li>
-      {% endfor %}
-      <div class="modal-cart-total">Subtotal: {{ cart.total_price | | money_with_currency }}</div>
+		<div class="">
+			{{ current_variant.inventory_quantity }} {{ product.title }} left!
+		</div>
+		<div class="modal-item-header">Items in your cart:</div>
+		{% for item in cart.items %}
+		<li>
+			<span class="modal-item-title">{{ item.title }}</span>
+			<span class="modal-item-quantity">Qty: {{ item.quantity }}</span>
+		</li>
+		{% endfor %}
+		<div class="modal-cart-total">
+			Subtotal: {{ cart.total_price | | money_with_currency }}
+		</div>
 
-      <a href="{{ routes.cart_url }}" class="">
-          View Cart (<span>{{cart.item_count}}</span>)
-        </a>
-      <div id="closeBtn">
-          <button class="button">
-            Continue Shopping
+		<a href="{{ routes.cart_url }}" class="">
+			View Cart (<span>{{ cart.item_count }}</span>)
+		</a>
+		<div id="closeBtn">
+			<button class="button">
+				Continue Shopping
+			</button>
+		</div>
+	</div>
+</div> -->
+
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalCenterTitle">{{ current_variant.inventory_quantity }} {{ product.title }} left!</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
           </button>
         </div>
+        <div class="modal-item-header">Items in your cart:</div>
+		{% for item in cart.items %}
+        <div class="modal-body">
+                <li>
+                        <span class="modal-item-title">{{ item.title }}</span>
+                        <span class="modal-item-quantity">Qty: {{ item.quantity }}</span>
+                </li>
+                {% endfor %}
+        </div>
+        <div class="modal-cart-total">
+                Subtotal: {{ cart.total_price | | money_with_currency }}
+            </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Continue Shopping</button>
+          <button type="button" class="btn btn-primary">
+              <a href="{{ routes.cart_url }}" class="">
+			View Cart (<span>{{ cart.item_count }}</span>)
+                </a>
+            </button>
+        </div>
+      </div>
     </div>
+  </div>
 
-	</div>
-</div>
+ 
