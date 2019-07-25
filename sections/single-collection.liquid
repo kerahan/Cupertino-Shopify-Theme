@@ -15,7 +15,10 @@
                 {% assign products = collection.products | sort: 'title' %}
                 {% for product in products %}
                 <div class="card" style="width: 18rem;">
-                    <img src="{{ product | img_url: 'large' }}" class="card-img-top" alt="...">
+                <a href="{{product.url |  asset_img_url: 'medium'}}">
+                
+                <img src="{{ product | img_url: 'large' }}" class="card-img-top" alt="...">
+                </a>
                     <div class="card-body">
                         <h5 class="card-title">{{product.title}}</h5>
                         <p class="card-text">{{product.price | money_with_currency }}</p>
@@ -34,7 +37,9 @@
             <div class="card-deck">
                 {% for product in collection.products %}
                 <div class="card" style="width: 18rem;">
-                    <img src="{{ product | img_url: 'large' }}" class="card-img-top" alt="...">
+                    <a href="{{product.url |  asset_img_url: 'medium'}}">
+                        <img src="{{ product | img_url: 'large' }}" class="card-img-top" alt="...">
+                    </a>
                     <div class="card-body">
                         <h5 class="card-title">{{product.title}}</h5>
                         <p class="card-text">{{product.price | money_with_currency }}</p>
